@@ -6,10 +6,10 @@ import { ChatHomeComponent } from './chat-home.component';
 
 const chat: Routes = [
   {
-    path: 'home',
+    path: '',
     component: ChatHomeComponent,
     children: [
-      { path: 'openchat', component: OpenChatComponent },
+      { path: '', component: OpenChatComponent },
       { path: 'messages', component: ChatMessagesComponent },
     ],
   },
