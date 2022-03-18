@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { conversa } from '../../models/conversa.model';
 import { ChatService } from '../../services/chat..service';
 
 @Component({
@@ -7,8 +8,15 @@ import { ChatService } from '../../services/chat..service';
   styleUrls: ['./chats.component.css'],
 })
 export class ChatsComponent implements OnInit {
-  
-
+  chats: conversa[] = [
+    { remet: 'Joaozin' },
+    { remet: 'Joaozin' },
+    { remet: 'Joaozin' },
+    { remet: 'Joaozin' },
+    { remet: 'Joaozin' },
+    { remet: 'Joaozin' },
+    { remet: 'Joaozin' },
+  ];
 
   constructor(private conversas: ChatService) {}
 
