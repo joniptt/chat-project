@@ -8,6 +8,7 @@ import { ChatComponentsModule } from './pages/chat-home/chat-components/chat-com
 import { ChatHomeComponent } from './pages/chat-home/chat-home.component';
 import { ChatHomeModule } from './pages/chat-home/chat-home.module';
 import { LoginComponent } from './pages/login/login.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 @NgModule({
   declarations: [AppComponent, ChatHomeComponent, LoginComponent],
   imports: [
@@ -17,6 +18,7 @@ import { LoginComponent } from './pages/login/login.component';
     HttpClientModule,
     ChatHomeModule,
     CommonModule,
+    NgbModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

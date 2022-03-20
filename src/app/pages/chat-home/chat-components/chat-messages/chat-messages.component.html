@@ -1,1 +1,20 @@
-<p>chat-messages works!</p>
+<div class="bg-light overflow-auto" style="height: 800px; max-height: 800px">
+  <div class="pt-5 overflow-auto" *ngFor="let message of messages">
+    <div class="d-flex justify-content-end">
+      <p
+        *ngIf="message.type === 1; else elseSelector"
+        class="d-flex m-2 p-2 list-group-item bg-primary text-white"
+        style="max-width: 400px"
+      >
+        {{ message.msg }}
+      </p>
+    </div>
+    <p
+      *ngIf="message.type === 2"
+      class="d-flex list-group-item m-2 p-2"
+      style="max-width: 400px"
+    >
+      {{ message.msg }}
+    </p>
+  </div>
+</div>

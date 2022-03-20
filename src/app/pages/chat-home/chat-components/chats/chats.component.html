@@ -1,7 +1,10 @@
-<div class="container">
-  <div class="col-2">
-    <div class="d-flex flex-column">
-      <a *ngFor="let conversa of chats">{{ conversa.remet }}</a>
-    </div>
-  </div>
+<div class="list-group overflow-auto" style="max-height: 800px; height: 800px">
+  <a
+    class="list-group-item list-group-item-action"
+    *ngFor="let conversa of chats"
+  >
+    <img src="{{ conversa.img }}" style="max-width: 50px" alt="" />
+    {{ conversa.remet }}
+    <p>{{ lastMsg.msg }}</p>
+  </a>
 </div>

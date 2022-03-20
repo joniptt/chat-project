@@ -9,8 +9,8 @@ const chat: Routes = [
     path: '',
     component: ChatHomeComponent,
     children: [
-      { path: '', component: OpenChatComponent },
-      { path: 'messages', component: ChatMessagesComponent },
+      { path: '', component: ChatMessagesComponent },
+      { path: 'chose', component: OpenChatComponent },
     ],
   },
 ];
