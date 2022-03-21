@@ -1,6 +1,7 @@
 export class Message {
   public id?: number;
   public msg?: string;
+  public idConv?: number;
   type?: number;
   public rem?: string;
   public dest?: string;
