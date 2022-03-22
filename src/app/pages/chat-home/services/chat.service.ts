@@ -11,16 +11,16 @@ export class ChatService {
 
   constructor(private http: HttpClient) {}
 
-  getMessages(rem: string): Observable<Message[]> {
-    return this.http.get<Message[]>(`chat/conversa/${rem}`).pipe(
+  getMessages(id: number): Observable<Message[]> {
+    return this.http.get<Message[]>(`chat/conversa/${id}`).pipe(
       tap((res) => {
         this.messages.next(res);
       })
     );
   }
 
-  getAllConversas(id: number): Observable<any> {
-    return this.http.get(`chat/conversas/${id}`);
+  getAllConversas(): Observable<any> {
+    return this.http.get(`conversas/${1}`);
   }
 
   addConversa(conv: { rem: string; dest: string }): Observable<any> {

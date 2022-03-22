@@ -1,0 +1,55 @@
+<div
+  class="container bg-light d-flex justify-content-center align-items-center"
+  style="
+    border: solid rgb(13, 110, 253) 0.5px;
+    margin-left: 30%;
+    margin-top: 10%;
+    width: 600px;
+    height: 400px;
+    border-radius: 10px;
+  "
+>
+  <form
+    formGroupName="cadform"
+    class="d-flex flex-column form-group"
+    (submit)="submit()"
+  >
+    <div>
+      <label for="name">Nome</label>
+      <input
+        formControlName="name"
+        id="name"
+        class="form-control"
+        type="text"
+      />
+    </div>
+    <div>
+      <label for="email">E-mail</label>
+      <input
+        formControlName="email"
+        id="email"
+        class="form-control"
+        type="text"
+      />
+    </div>
+    <div>
+      <label for="name">Password</label>
+      <input
+        formControlName="password"
+        id="name"
+        class="form-control"
+        type="text"
+      />
+    </div>
+    <div>
+      <label for="name">Telefone</label>
+      <input
+        formControlName="telefone"
+        id="name"
+        class="form-control"
+        type="text"
+      />
+    </div>
+    <button type="submit" class="btn btn-primary my-4 col-3">Sign Up</button>
+  </form>
+</div>

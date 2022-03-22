@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { User } from 'src/app/pages/login/models/user.model';
-import { LoginService } from 'src/app/pages/login/services/login.service';
-import { Conversa } from '../../models/conversa.model';
+import { AuthService } from 'src/app/pages/login/services/auth.service';
 import { Message } from '../../models/message.model';
 import { ChatService } from '../../services/chat.service';
 
@@ -11,25 +10,27 @@ import { ChatService } from '../../services/chat.service';
   styleUrls: ['./chats.component.css'],
 })
 export class ChatsComponent implements OnInit {
-  user: User = {};
+  img =
+    'https://img.favpng.com/8/14/0/computer-icons-user-profile-material-design-png-favpng-fhWEA7BrBaUmKQZ5DYmuv2qDm.jpg';
+  user: User = new User(1, 'jdospassos8@gmail.com', 'joao', '48999400353');
   lastMsg: Message = {};
   messages: Message[] = [];
-  chats: Conversa[] = [];
+  chats: User[] = [];
 
-  constructor(private conversas: ChatService, private login: LoginService) {}
+  constructor(private conversas: ChatService, private auth: AuthService) {}
 
   ngOnInit(): void {
-    this.login.usuario.subscribe((res) => {
+    this.auth.usuario.subscribe((res) => {
       this.user = res;
     });
     const msgIndex = this.messages.map((p) => p.type).lastIndexOf(1);
     console.log(msgIndex);
     this.lastMsg = this.messages[msgIndex];
-    this.conversas.getAllConversas(this.user.id).subscribe((res) => {
+    this.conversas.getAllConversas().subscribe((res) => {
       this.chats = res;
     });
   }
   getConversa() {
-    this.conversas.getMessages(this.user.email).subscribe();
+    this.conversas.getMessages(this.user.id).subscribe();
   }
 }
