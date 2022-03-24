@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
 import { AuthService } from '../login/services/auth.service';
 
@@ -9,7 +10,11 @@ import { AuthService } from '../login/services/auth.service';
 })
 export class CadastroComponent implements OnInit {
   cadForm: FormGroup;
-  constructor(private formBuilder: FormBuilder, private auth: AuthService) {}
+  constructor(
+    private formBuilder: FormBuilder,
+    private auth: AuthService,
+    private route: Router
+  ) {}
 
   ngOnInit(): void {
     this.cadForm = this.formBuilder.group({
@@ -24,7 +29,8 @@ export class CadastroComponent implements OnInit {
       this.auth.cadastro(this.cadForm.value).subscribe(
         (res) => {
           Swal.fire({
-            text: 'Cadastro efetuado com sucesso!',
+            title: res.status,
+            text: res.msg,
             position: 'top',
             icon: 'success',
             width: '400px',
@@ -32,19 +38,20 @@ export class CadastroComponent implements OnInit {
             timerProgressBar: true,
             showConfirmButton: false,
           });
+          this.route.navigate(['/login']);
+        },
+        (error) => {
+          Swal.fire({
+            title: `Error ${error.status}!`,
+            text: error.msg,
+            position: 'top',
+            icon: 'error',
+            width: '400px',
+            timer: 2000,
+            timerProgressBar: true,
+            showConfirmButton: false,
+          });
         }
-        // (error) => {
-        //   Swal.fire({
-        //     title: 'Erro 401!',
-        //     text: 'Ocorreu um erro na hora de realizar o cadastro!',
-        //     position: 'top',
-        //     icon: 'error',
-        //     width: '400px',
-        //     timer: 2000,
-        //     timerProgressBar: true,
-        //     showConfirmButton: false,
-        //   });
-        // }
       );
     } else {
       Swal.fire({
