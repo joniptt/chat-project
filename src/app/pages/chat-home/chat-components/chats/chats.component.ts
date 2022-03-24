@@ -31,6 +31,6 @@ export class ChatsComponent implements OnInit {
     });
   }
   getConversa() {
-    this.conversas.getMessages(this.user.id).subscribe();
+    this.conversas.getMessages(this.user.iduser).subscribe();
   }
 }

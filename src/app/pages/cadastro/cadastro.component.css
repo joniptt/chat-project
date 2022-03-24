@@ -1,3 +1,9 @@
 input {
   width: 400px;
 }
+body {
+  height: 100%;
+}
+.swal-height {
+  height: 100px;
+}

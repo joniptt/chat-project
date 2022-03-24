@@ -2,17 +2,16 @@
   class="container bg-light d-flex justify-content-center align-items-center"
   style="
     border: solid rgb(13, 110, 253) 0.5px;
-    margin-left: 30%;
     margin-top: 10%;
     width: 600px;
-    height: 400px;
+    height: 500px;
     border-radius: 10px;
   "
 >
   <form
-    formGroupName="cadform"
+    [formGroup]="cadForm"
     class="d-flex flex-column form-group"
-    (submit)="submit()"
+    (ngSubmit)="submit()"
   >
     <div>
       <label for="name">Nome</label>
@@ -22,6 +21,11 @@
         class="form-control"
         type="text"
       />
+      <span
+        style="color: red; font-size: 10pt"
+        *ngIf="!cadForm.get('name').valid && cadForm.get('name').touched"
+        >!Por favor preenha o campo</span
+      >
     </div>
     <div>
       <label for="email">E-mail</label>
@@ -31,24 +35,43 @@
         class="form-control"
         type="text"
       />
+      <span
+        style="color: red; font-size: 10pt"
+        *ngIf="!cadForm.get('email').valid && cadForm.get('email').touched"
+        >!Por favor preenha o campo</span
+      >
     </div>
     <div>
-      <label for="name">Password</label>
+      <label for="password">Password</label>
       <input
         formControlName="password"
-        id="name"
+        id="password"
         class="form-control"
         type="text"
       />
+      <span
+        style="color: red; font-size: 10pt"
+        *ngIf="
+          !cadForm.get('password').valid && cadForm.get('password').touched
+        "
+        >!Por favor preenha o campo</span
+      >
     </div>
     <div>
-      <label for="name">Telefone</label>
+      <label for="phone">Telefone</label>
       <input
         formControlName="telefone"
-        id="name"
+        id="phone"
         class="form-control"
         type="text"
       />
+      <span
+        style="color: red; font-size: 10pt"
+        *ngIf="
+          !cadForm.get('telefone').valid && cadForm.get('telefone').touched
+        "
+        >!Por favor preenha o campo</span
+      >
     </div>
     <button type="submit" class="btn btn-primary my-4 col-3">Sign Up</button>
   </form>
